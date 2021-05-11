@@ -1,0 +1,15 @@
+<h1>My Tasks</h1>
+<ul class= 'list-inline'>
+  <% @tasks.each do |t| %>
+    <li>
+      <%== t.completed ? "<i class='fas fa-check-square'></i>" : "<i class='far fa-square'></i>" %>
+      <%= link_to  "#{t.title}", task_path(t.id) %>    <%= link_to "<i class='far fa-trash-alt'></i>".html_safe,
+        task_path(t.id),
+        method: :delete,
+        data: { confirm: "Delete #{t.title}?" } %>
+    </li>
+
+  <% end %>
+</ul>
+
+<%= link_to  "Add a new task", new_task_path %>
